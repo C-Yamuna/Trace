@@ -1,0 +1,55 @@
+<div class="container">
+    <h1>Angular CRUD with Dropdowns & Checkboxes</h1>
+  
+    <div class="form-group">
+      
+      <input type="text" [(ngModel)]="newRule.ruleName" placeholder="Rule Name">
+  
+      
+      <select [(ngModel)]="newRule.type">
+        <option value="Match">Match</option>
+        <option value="Custom">Custom</option>
+        <option value="Monitor">Monitor</option>
+      </select>
+  
+      <input type="text" [(ngModel)]="newRule.createdDate" readonly placeholder="Created Date">
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" [(ngModel)]="newRule.active" [value]="'Y'" [checked]="newRule.active === 'Y'"> Active
+      </label>
+  
+      <label>
+        <input type="checkbox" [(ngModel)]="newRule.favourite" [value]="'Y'" [checked]="newRule.favourite === 'Y'"> Favourite
+      </label>
+  
+      <label>
+        <input type="checkbox" [(ngModel)]="newRule.scheduled" [value]="'Y'" [checked]="newRule.scheduled === 'Y'"> Scheduled
+      </label>
+  
+      <label>
+        <input type="checkbox" [(ngModel)]="newRule.alert" [value]="'Y'" [checked]="newRule.alert === 'Y'"> Alert
+      </label>
+    </div>
+  
+    <div>
+      <button (click)="addOrUpdateRule()">
+        {{ editIndex !== null ? 'Update Rule' : 'Add Rule' }}
+      </button>
+    </div>
+    </div>
+  
+  
+  
+    
+  
+    <ul style="margin-top: 20px;">
+      <li *ngFor="let rule of rules; let i = index">
+        <span><b>Rule {{ rule.id }}:</b> {{ rule.ruleName }} - {{ rule.type }} - Active: {{ rule.active }} - Favourite: {{ rule.favourite }} - Scheduled: {{ rule.scheduled }} - Alert: {{ rule.alert }}</span>
+        <div>
+          <button class="edit" style="margin-right: 10px;" (click)="editRule(i)">Edit</button>
+          <button class="delete" (click)="deleteRule(i)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
