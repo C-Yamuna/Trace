@@ -33,7 +33,6 @@ export class CrudComponent {
   editIndex: number | null = null;
 
   addOrUpdateRule() {
-    debugger
     if (this.editIndex !== null) {
       this.rules[this.editIndex] = { ...this.newRule };
       this.editIndex = null;
@@ -45,7 +44,6 @@ export class CrudComponent {
   }
 
   editRule(index: number) {
-    debugger
     this.newRule = { ...this.rules[index] };
     this.editIndex = index;
   }
